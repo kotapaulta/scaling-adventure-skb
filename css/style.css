@@ -1,0 +1,57 @@
+.sum-wrapper{
+    width: 210px;
+    height: auto;
+}
+
+.price-element{
+    height: 40px;
+    list-style-type: none;
+    width: 410px;
+}
+.price-input{
+    outline:none;
+    border: none;
+}
+.price-input:focus{
+    border: 2px inset #EBE9ED;;
+}
+
+.price-element-ok:hover{
+    background-color: #BFDFF3;
+}
+.price-element-ok:hover > .price-input{
+    background-color: #BFDFF3;
+}
+
+.price-input:focus > .price-input{
+    background-color: white;
+}
+
+.price-element-ok:hover > .price-remove{
+    display:inline;
+}
+
+.price-remove{
+    display: none;
+}
+
+.price-element-editing > .price-save{
+    display:inline;
+}
+
+.price-save{
+    display:none;
+}
+
+.block{
+    display: block;
+}
+.right{
+    float: right;
+}
+
+
+
+
+
+
