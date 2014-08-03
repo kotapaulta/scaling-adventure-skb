@@ -2,27 +2,34 @@
     width: 210px;
     height: auto;
 }
-
+.sum{
+    position: absolute;
+    width: 150px;
+    height: 25px;
+}
+.prices-list{
+    margin-bottom: 0;
+    margin-top: 30px;
+}
 .price-element{
     height: 30px;
     list-style-type: none;
-    width: 410px;
+    width: 250px;
 }
 .price-input{
     outline:none;
     border: none;
 }
+
 .price-input:focus{
     border: 2px inset #EBE9ED;;
 }
-
-.price-element-ok:hover{
+.price-element-ok:hover > .price-label-ok{
     background-color: #BFDFF3;
 }
-.price-element-ok:hover > .price-input{
+.price-element-ok:hover > .price-remove{
     background-color: #BFDFF3;
 }
-
 .price-input:focus > .price-input{
     background-color: white;
 }
@@ -30,17 +37,27 @@
 .price-element-ok:hover > .price-remove{
     display:inline;
 }
-
 .price-remove{
+    color: #203695;
     display: none;
+    position: absolute;
+    left: 162px;
+    height: 30px;
+    cursor: pointer;
+}
+.price-remove-label{
+    height: 30px;
+    border-bottom: 2px dashed #203695;
 }
 
 .price-element-editing > .price-save{
     display:inline;
 }
-
 .price-save{
     display:none;
+    position: absolute;
+    left: 162px;
+    height: 26px;
 }
 
 .block{
@@ -49,20 +66,37 @@
 .right{
     float: right;
 }
+
 .price-label-editing{
     display: none;
 }
 .price-label-ok{
-    display: inline;
+    position: absolute;
+    left:50px;
+    width: 100px;
+    padding: 6px;
+    cursor: pointer;
 }
 
 .price-text-ok{
     display: none;
 }
 
-.sum-total-normal{
+.price-text-editing{
     position: absolute;
     left:50px;
+    width: 100px;
+    padding: 4px;
+    text-align:right;
+    z-index: 0;
+}
+price-text-editing:focus, input:focus{
+    outline: 0;
+}
+
+.sum-total-normal{
+    position: absolute;
+    left:0;
     width: 150px;
     padding: 6px;
 }
@@ -71,10 +105,13 @@
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0;
-    left:50px;
+    left:0;
     border: 1px solid #000000;
     padding: 5px;
     width: 150px;
+}
+.ng-invalid-number{
+    background-color: pink;
 }
 
 

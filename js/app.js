@@ -20,6 +20,7 @@
           price:0,
           status: 'editing'
         });
+        $scope.shouldBeOpen = true;
         isExtend (true);
       };
 
@@ -30,11 +31,15 @@
 
       $scope.setOkStatus = function(index){
         $scope.prices[index].status = 'ok';
+        $scope.shouldBeOpen = false;
       };
       $scope.setEditingStatus = function(index){
-        if($scope.prices[index].status === 'ok'){
-          $scope.prices[index].status = 'editing';
-        }
+        angular.forEach($scope.prices, function(price) {
+          price.status = 'ok';
+        });
+        $scope.shouldBeOpen = true;
+
+        $scope.prices[index].status = 'editing';
       };
 
 
@@ -47,19 +52,22 @@
       };
 
       $scope.separatePrice = function(price){
-        var priceToParse;
+        var priceToParse,
+            separated,
+            inputValue,
+            newValue;
         if(price){
           priceToParse = price.toString();
         } else {
           priceToParse = '0';
         }
-        var separated = priceToParse.replace(/\D/g, '');
-        var inputValue = separated
+        separated = priceToParse.replace(/\D/g, '');
+        inputValue = separated
           .replace(' ', '')
           .split("")
           .reverse()
           .join("");
-        var newValue = '';
+        newValue = '';
         for (var i = 0; i < inputValue.length; i++) {
           if (i % 3 === 0) {
             newValue += ' ';
@@ -78,50 +86,36 @@
         return separated;
       };
 
-      function isExtend (noApply){
-        var docHeight = $(document).height(),
-          windowHeight = $(window).height(),
-          scrollTop = document.documentElement.getElementsByTagName('body')[0].scrollTop;
-
-        if(docHeight<=windowHeight){
-
-          if(!noApply){
-            $scope.$apply(function(){
-              $scope.extend = false;
-            });
-          } else {
-            $scope.extend = false;
-          }
-
-        } else if(windowHeight + scrollTop >= docHeight){
-          if(!noApply){
-            $scope.$apply(function(){
-              $scope.extend = false;
-            });
-          } else {
-            $scope.extend = false;
-          }
-        } else {
-          if(!noApply){
-            $scope.$apply(function(){
-              $scope.extend = true;
-            });
-          } else {
-            $scope.extend = true;
-          }
-        }
-      }
-
       angular.element($window).bind("scroll", function() {
         isExtend();
       });
+
+      function isExtend (noApply){
+        var docHeight = $(document).height(),
+            windowHeight = $(window).height(),
+            scrollTop = document.documentElement.getElementsByTagName('body')[0].scrollTop,
+            extend = false;
+
+        if(docHeight<=windowHeight){
+          extend = false;
+        } else {
+          extend = !Boolean(windowHeight + scrollTop >= docHeight);
+        }
+
+        if(!noApply){
+          $scope.$apply(function(){
+            $scope.extend = extend;
+          });
+        } else {
+          $scope.extend = extend;
+        }
+      }
     }])
 
     .directive('appType', function () {
       return {
         require: 'ngModel',
         link: function (scope, elem, attrs, ctrl) {
-          // Custom number validation logic.
           if (attrs.appType === 'number') {
             return ctrl.$parsers.push(function (value) {
               var valid = value === null || isFinite(value);
@@ -130,7 +124,23 @@
 
               return valid && value !== null ? Number(value) : undefined;
             });
+          } else {
+            return false;
           }
+        }
+      };
+    })
+    .directive('focusMe', function($timeout, $parse) {
+      return {
+        link: function(scope, element, attrs) {
+          var model = $parse(attrs.focusMe);
+          scope.$watch(model, function(value) {
+            if(value === true) {
+              $timeout(function() {
+                element[0].focus();
+              });
+            }
+          });
         }
       };
     });

@@ -1,33 +1,34 @@
 <!Doctype html>
 <html lang="en" ng-app="skbApp">
 <head>
-    <meta charset="utf-8">
-    <title>Scaling adventure skb</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <title>Scaling adventure skb</title>
+  <link rel="stylesheet" href="css/style.css">
 
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="js/app.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="js/app.js"></script>
 
 </head>
 <body>
 
-
 <div ng-controller="SumController" class="sum-wrapper">
-    <button class="block"ng-click="addString()">Добавить строчку</button>
-    <span class="block right"><b>Сумма, р.</b></span>
+  <button class="block"ng-click="addString()">Добавить строчку</button>
+  <span class="sum"><b class="right">Сумма, р.</b></span>
 
-    <ul class="block">
-        <li class="price-element price-element-{{price.status}}" ng-repeat="price in prices">
-            <div class="price-label-{{price.status}}" ng-click="setEditingStatus($index)">{{separatePrice(price.price)}}</div>
-            <input class="price-text-{{price.status}}" ng-model="price.price" app-type="number" placeholder="Enter a value" required ng-click="setEditingStatus($index)">
-            <a href="" class="price-remove" ng-click="removeString($index)">Удалить</a>
-            <button class="price-save" ng-click="setOkStatus($index)">Сохранить</button>
+  <ul class="prices-list block">
+    <li class="price-element price-element-{{price.status}}" ng-repeat="price in prices">
+     <span class="price-label-{{price.status}} " ng-click="setEditingStatus($index)">
+       <span class="right">{{separatePrice(price.price)}}</span>
+     </span>
+     <span class="price-remove" ng-click="removeString($index)" >
+       <span class="price-remove-label">Удалить</span>
+     </span>
 
-        </li>
-    </ul>
-
-  {{extend}}
+      <input class="price-text-{{price.status}}" ng-model="price.price" app-type="number" placeholder="Enter a value" ng-click="setEditingStatus($index)" maxlength="10" focus-me="shouldBeOpen" required>
+      <button class="price-save" ng-click="setOkStatus($index)">Сохранить</button>
+    </li>
+  </ul>
 
     <span class="sum-total-normal" ng-show="!extend">
       Итого: <b class="right">{{separatePrice(totalSum())}}</b>
@@ -36,7 +37,6 @@
     <span class="sum-total-extended" ng-show="extend">
       Итого: <b class="right">{{separatePrice(totalSum())}}</b>
     </span>
-
 </div>
 
 </body>
