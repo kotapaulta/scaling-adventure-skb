@@ -4,7 +4,7 @@
 }
 
 .price-element{
-    height: 40px;
+    height: 30px;
     list-style-type: none;
     width: 410px;
 }
@@ -49,7 +49,16 @@
 .right{
     float: right;
 }
+.price-label-editing{
+    display: none;
+}
+.price-label-ok{
+    display: inline;
+}
 
+.price-text-ok{
+    display: none;
+}
 
 
 

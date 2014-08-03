@@ -18,15 +18,15 @@
 
     <ul class="block">
         <li class="price-element price-element-{{price.status}}" ng-repeat="price in prices">
-            <div class="price-label-{{price.status}}">{{separatePrice(price.price)}}</div>
-            <input type="text" class="price-input" ng-model="price.price" placeholder="Enter a value" required ng-click="setEditStatus($index)">
+            <div class="price-label-{{price.status}}" ng-click="setEditingStatus($index)">{{separatePrice(price.price)}}</div>
+            <input class="price-text-{{price.status}}" ng-model="price.price" app-type="number" placeholder="Enter a value" required ng-click="setEditingStatus($index)">
             <a href="" class="price-remove" ng-click="removeString($index)">Удалить</a>
             <button class="price-save" ng-click="setOkStatus($index)">Сохранить</button>
 
         </li>
     </ul>
 
-    <span class="block right">Итого: <b>{{totalSum()}}</b></span>
+    <span class="block right">Итого: <b>{{separatePrice(totalSum())}}</b></span>
 
 </div>
 
