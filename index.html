@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="js/app.js"></script>
 
 </head>
@@ -26,7 +27,15 @@
         </li>
     </ul>
 
-    <span class="block right">Итого: <b>{{separatePrice(totalSum())}}</b></span>
+  {{extend}}
+
+    <span class="sum-total-normal" ng-show="!extend">
+      Итого: <b class="right">{{separatePrice(totalSum())}}</b>
+    </span>
+
+    <span class="sum-total-extended" ng-show="extend">
+      Итого: <b class="right">{{separatePrice(totalSum())}}</b>
+    </span>
 
 </div>
 

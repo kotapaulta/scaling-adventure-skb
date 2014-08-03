@@ -1,30 +1,31 @@
-/* global angular, $scope */
+/* global angular, $scope, $*/
 
 (function () {
   'use strict';
   angular.module('skbApp',[])
-    .config(['$locationProvider', '$httpProvider',
-      function($locationProvider, $httpProvider){
+    .config(['$locationProvider',
+      function($locationProvider){
         $locationProvider.html5Mode(true);
       }
     ])
-    .controller('SumController', ['$scope', '$rootScope', function($scope,$rootScope) {
+    .controller('SumController', ['$scope', '$window', function($scope,$window) {
       $scope.prices = [];
+      $scope.extend = false;
 
       $scope.addString = function(){
         angular.forEach($scope.prices, function(price) {
-          console.log('price is:', price);
           price.status = 'ok';
         });
         $scope.prices.unshift({
           price:0,
           status: 'editing'
         });
+        isExtend (true);
       };
 
       $scope.removeString = function(index){
-        console.log('index:', index);
         $scope.prices.splice(index, 1);
+        isExtend (true);
       };
 
       $scope.setOkStatus = function(index){
@@ -40,7 +41,6 @@
       $scope.totalSum = function(){
         var total = 0;
         angular.forEach($scope.prices, function(price) {
-          console.log('price is:', price);
           total += parseInt(price.price, 10) || 0;
         });
         return total;
@@ -77,6 +77,44 @@
         }
         return separated;
       };
+
+      function isExtend (noApply){
+        var docHeight = $(document).height(),
+          windowHeight = $(window).height(),
+          scrollTop = document.documentElement.getElementsByTagName('body')[0].scrollTop;
+
+        if(docHeight<=windowHeight){
+
+          if(!noApply){
+            $scope.$apply(function(){
+              $scope.extend = false;
+            });
+          } else {
+            $scope.extend = false;
+          }
+
+        } else if(windowHeight + scrollTop >= docHeight){
+          if(!noApply){
+            $scope.$apply(function(){
+              $scope.extend = false;
+            });
+          } else {
+            $scope.extend = false;
+          }
+        } else {
+          if(!noApply){
+            $scope.$apply(function(){
+              $scope.extend = true;
+            });
+          } else {
+            $scope.extend = true;
+          }
+        }
+      }
+
+      angular.element($window).bind("scroll", function() {
+        isExtend();
+      });
     }])
 
     .directive('appType', function () {
