@@ -93,9 +93,8 @@
       function isExtend (noApply){
         var docHeight = $(document).height(),
             windowHeight = $(window).height(),
-            scrollTop = document.documentElement.getElementsByTagName('body')[0].scrollTop,
+            scrollTop = $(window).scrollTop(),
             extend = false;
-
         if(docHeight<=windowHeight){
           extend = false;
         } else {
@@ -144,6 +143,5 @@
         }
       };
     });
-
 
 }());
