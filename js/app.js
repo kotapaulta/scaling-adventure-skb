@@ -46,7 +46,7 @@
       $scope.totalSum = function(){
         var total = 0;
         angular.forEach($scope.prices, function(price) {
-          total += parseInt(price.price, 10) || 0;
+          total += parseFloat(price.price) || 0;
         });
         return total;
       };
@@ -61,7 +61,7 @@
         } else {
           priceToParse = '0';
         }
-        separated = priceToParse.replace(/\D/g, '');
+        separated = priceToParse.replace(/[^\d^\.]/g, '');
         inputValue = separated
           .replace(' ', '')
           .split("")
