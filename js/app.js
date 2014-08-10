@@ -48,6 +48,7 @@
         angular.forEach($scope.prices, function(price) {
           total += parseFloat(price.price) || 0;
         });
+        total = total.toFixed(2);
         return total;
       };
 
@@ -78,10 +79,14 @@
           .split("")
           .reverse()
           .join("")
-          .replace(/\s$/g,'');
+          .replace(/\s$/g,'')
+          .replace(/(\d)\s(\.\d{2})/ig, concatTwoSelections);
 
         if (price < 0){
          separated ='-' + separated;
+        }
+        function concatTwoSelections (str, p1, p2) {
+          return p1 + p2;
         }
         return separated;
       };
