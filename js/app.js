@@ -58,10 +58,11 @@
             inputValue,
             newValue;
         if(price){
-          priceToParse = price.toString();
+          priceToParse = parseFloat(price).toFixed(2);
         } else {
           priceToParse = '0';
         }
+        priceToParse.toString();
         separated = priceToParse.replace(/[^\d^\.]/g, '');
         inputValue = separated
           .replace(' ', '')

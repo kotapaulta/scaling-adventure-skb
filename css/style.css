@@ -1,3 +1,9 @@
+input[type="button"]{
+    font: 16px Times New Roman, sans-serif;
+}
+input:focus {
+    outline: none;
+}
 .sum-wrapper{
     width: 210px;
     height: auto;
@@ -35,7 +41,7 @@
 }
 
 .price-element-ok:hover > .price-remove{
-    display:inline;
+    display:inline-block;
 }
 .price-remove{
     color: #203695;
@@ -44,9 +50,13 @@
     left: 162px;
     height: 30px;
     cursor: pointer;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .price-remove-label{
-    height: 30px;
+    padding-top: 5px;
+    display: inline-block;
+    height: 20px;
     border-bottom: 2px dashed #203695;
 }
 
@@ -54,10 +64,12 @@
     display:inline;
 }
 .price-save{
+    margin-left: 15px;
+    margin-top: 5px;
     display:none;
     position: absolute;
     left: 162px;
-    height: 26px;
+    /*height: 26px;*/
 }
 
 .block{
@@ -76,6 +88,7 @@
     width: 100px;
     padding: 6px;
     cursor: pointer;
+    height: 18px;
 }
 
 .price-text-ok{
@@ -86,6 +99,7 @@
 .price-text-editing{
     position: absolute;
     font: 16px Times New Roman, sans-serif;
+    box-shadow:none;
     left:50px;
     width: 100px;
     padding: 4px;
@@ -115,7 +129,6 @@ price-text-editing:focus, input:focus{
 .ng-invalid-number{
     background-color: pink;
 }
-
 
 
 
