@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Scaling adventure skb</title>
+  <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 
   <script src="bower_components/angular/angular.js"></script>
@@ -26,7 +27,7 @@
      </span>
 
       <input type='text' class="price-text-{{price.status}}" ng-model="price.price" app-type="number" placeholder="Enter a value" ng-blur="setOkStatus($index)" ng-click="setEditingStatus($index)" maxlength="10" focus-me="shouldBeOpen" required>
-      <input type="button" class="price-save" ng-click="setOkStatus($index" value="Сохранить">
+      <input type="button" class="price-save" ng-click="setOkStatus($index)" value="Сохранить">
     </li>
   </ul>
 
