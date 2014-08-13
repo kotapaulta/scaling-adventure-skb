@@ -1,8 +1,9 @@
 input[type="button"]{
     font: 16px Times New Roman, sans-serif;
 }
-input:focus {
-    outline: none;
+input[type="text"]:focus {
+    outline:none;
+    border: 1px solid #777777;
 }
 .sum-wrapper{
     width: 210px;
@@ -125,9 +126,6 @@ price-text-editing:focus, input:focus{
     border: 1px solid #000000;
     padding: 5px;
     width: 150px;
-}
-.ng-invalid-number{
-    background-color: pink;
 }
 
 
