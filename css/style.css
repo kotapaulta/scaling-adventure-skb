@@ -3,7 +3,7 @@ input[type="button"]{
 }
 input[type="text"]:focus {
     outline:none;
-    border: 1px solid #777777;
+    border: inset 2px;
 }
 .sum-wrapper{
     width: 210px;
@@ -70,7 +70,6 @@ input[type="text"]:focus {
     display:none;
     position: absolute;
     left: 162px;
-    /*height: 26px;*/
 }
 
 .block{
@@ -127,7 +126,3 @@ price-text-editing:focus, input:focus{
     padding: 5px;
     width: 150px;
 }
-
-
-
-
