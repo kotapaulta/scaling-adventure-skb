@@ -8,7 +8,7 @@
         $locationProvider.html5Mode(true);
       }
     ])
-    .controller('SumController', ['$scope', '$window', function($scope,$window) {
+    .controller('SumController', ['$scope', '$window', function($scope, $window) {
       $scope.prices = [];
       $scope.extend = false;
 
@@ -21,12 +21,10 @@
           status: 'editing'
         });
         $scope.shouldBeOpen = true;
-        isExtend (true);
       };
 
       $scope.removeString = function(index){
         $scope.prices.splice(index, 1);
-        isExtend (true);
       };
 
       $scope.setOkStatus = function(index){
@@ -95,6 +93,22 @@
       angular.element($window).bind("scroll", function() {
         isExtend();
       });
+      angular.element($window).bind("resize", function() {
+        isExtend();
+      });
+
+      function checkDocumentHeight(callback){
+        var lastHeight = document.body.clientHeight, newHeight, timer;
+        (function run(){
+          newHeight = document.body.clientHeight;
+          if( lastHeight !== newHeight ){
+            callback();
+          }
+          lastHeight = newHeight;
+          timer = setTimeout(run, 100);
+        })();
+      }
+      checkDocumentHeight(isExtend);
 
       function isExtend (noApply){
         var docHeight = $(document).height(),
