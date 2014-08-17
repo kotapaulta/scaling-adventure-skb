@@ -16,7 +16,7 @@ input[type="text"]:focus {
 }
 .price-add{
     margin-left: 50px;
-    margin-right: 0px;
+    margin-right: 0;
 }
 .sum{
     position: absolute;
@@ -117,9 +117,6 @@ input[type="text"]:focus {
     padding: 4px;
     text-align:right;
     z-index: 0;
-}
-price-text-editing:focus, input:focus{
-    outline: 0;
 }
 
 .sum-total-normal{
