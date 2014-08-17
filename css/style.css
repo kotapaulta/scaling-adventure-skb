@@ -1,6 +1,11 @@
-input[type="button"]{
-    font: 16px Times New Roman, sans-serif;
+input {
+    font-size: 12px;
 }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
 input[type="text"]:focus {
     outline:none;
     border: inset 2px;
@@ -9,10 +14,15 @@ input[type="text"]:focus {
     width: 210px;
     height: auto;
 }
+.price-add{
+    margin-left: 50px;
+    margin-right: 0px;
+}
 .sum{
     position: absolute;
     width: 150px;
     height: 25px;
+    margin-top: 10px;
 }
 .prices-list{
     margin-bottom: 0;
@@ -53,12 +63,13 @@ input[type="text"]:focus {
     cursor: pointer;
     padding-left: 15px;
     padding-right: 15px;
+    width: 65px;
 }
 .price-remove-label{
-    padding-top: 5px;
+    padding-top: 7px;
     display: inline-block;
-    height: 20px;
-    border-bottom: 2px dashed #203695;
+    height: 15px;
+    border-bottom: 1px dashed #203695;
 }
 
 .price-element-editing > .price-save{
@@ -86,19 +97,20 @@ input[type="text"]:focus {
     position: absolute;
     left:50px;
     width: 100px;
-    padding: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 10px;
+    padding-bottom: 2px;
     cursor: pointer;
     height: 18px;
 }
 
 .price-text-ok{
     display: none;
-    font: 16px Times New Roman, sans-serif;
 }
 
 .price-text-editing{
     position: absolute;
-    font: 16px Times New Roman, sans-serif;
     box-shadow:none;
     left:50px;
     width: 100px;
@@ -112,8 +124,8 @@ price-text-editing:focus, input:focus{
 
 .sum-total-normal{
     position: absolute;
-    left:0;
-    width: 150px;
+    left:40px;
+    width: 110px;
     padding: 6px;
 }
 
@@ -121,8 +133,8 @@ price-text-editing:focus, input:focus{
     background-color: #FFFFFF;
     position: fixed;
     bottom: 0;
-    left:0;
+    left:40px;
     border: 1px solid #000000;
     padding: 5px;
-    width: 150px;
+    width: 110px;
 }
